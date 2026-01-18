@@ -3,7 +3,8 @@ const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
-const dbFile = path.join(__dirname, "data.sqlite");
+const dbFile =
+  process.env.DATABASE_PATH || path.join(__dirname, "data.sqlite");
 const db = new sqlite3.Database(dbFile);
 
 app.use(express.json());

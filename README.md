@@ -14,6 +14,20 @@ npm start
 ```
 Then open http://localhost:3000
 
+## Deploy on Render
+This repo includes a `render.yaml` blueprint with a persistent disk for SQLite.
+
+Option A: Blueprint
+1) Push this repo to GitHub.
+2) In Render, choose "New" -> "Blueprint" and select the repo.
+3) Render provisions the web service and disk automatically.
+
+Option B: Manual
+1) Create a new Web Service from the repo.
+2) Build command: `npm install`
+3) Start command: `node server.js`
+4) Add a disk with mount path `/var/data` and set `DATABASE_PATH=/var/data/data.sqlite`.
+
 ## API
 - `GET /api/orgs`
 - `POST /api/orgs` `{ "name": "Team Alpha" }`

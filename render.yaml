@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: workout-charts
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_PATH
+        value: /var/data/data.sqlite
+    disk:
+      name: sqlite-data
+      mountPath: /var/data
+      sizeGB: 1
