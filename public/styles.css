@@ -1,12 +1,5 @@
-#landing-page {
-  background-color: #f0f0f0;
-}
-
-#landing-page header {
-  display: flex;
-  justify-content: space-between;
-}
-
-#landing-page .card {
-  margin-bottom: 20px;
-}
+body { font-family: Arial, sans-serif; }
+header { background-color: #333; color: #fff; padding: 1em; text-align: center; }
+.card { background-color: #f7f7f7; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1em; }
+b.button { background-color: #333; color: #fff; border: none; padding: 0.5em 1em; font-size: 1em; cursor: pointer; }
+button:hover { background-color: #444; }
