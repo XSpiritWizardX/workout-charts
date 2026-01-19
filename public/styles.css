@@ -10,8 +10,7 @@
 }
 
 .reveal {
-  animation-name: reveal;
-  animation-duration: 1s;
+  animation: reveal 1s forwards;
 }
 
 @keyframes reveal {
