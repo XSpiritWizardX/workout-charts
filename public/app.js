@@ -1,22 +1,4 @@
-const revealItems = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
-revealItems.forEach(item => revealObserver.observe(item));
-
-const form = document.getElementById('waitlist-form');
-const message = document.getElementById('waitlist-message');
-if (form && message) {
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    message.textContent = 'You are on the list. We will be in touch soon.';
-    form.reset();
-  });
-}
+Create a small vanilla JS app that mounts into a new <section id="app"></section> in public/index.html and runs on DOMContentLoaded.
+State: { orgs: [], selectedOrgId: null, workouts: [], exercisesByWorkout: {} } with localStorage for selected org.
+UI: org selector + create org form; workout list with add workout form; per-workout exercise list with add exercise form; inline success/error messages.
+API: GET/POST /api/orgs, GET/POST /api/orgs/:orgId/workouts, GET/POST /api/workouts/:workoutId/exercises with fetch + JSON; re-fetch or update state on success.
