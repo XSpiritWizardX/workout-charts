@@ -1,21 +1,28 @@
-body { background-color: #f0f0f0; }
-
-.card {
-  background-color: #fff;
+<style>
+body {
+  background-color: #f7f7f7;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+h1, h2 {
+  color: #007bff;
+}
+card {
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.button {
-  background-color: #333;
-  color: #fff;
+button[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
-
-.button:hover {
-  background-color: #444;
+button[type="submit":hover] {
+  background-color: #0056b3;
 }
+</style>
