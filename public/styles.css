@@ -1,28 +1,12 @@
-<style>
-body {
-  background-color: #f7f7f7;
+#landing-page {
+  background-color: #f0f0f0;
 }
-header {
+
+#landing-page header {
   display: flex;
   justify-content: space-between;
 }
-h1, h2 {
-  color: #007bff;
+
+#landing-page .card {
+  margin-bottom: 20px;
 }
-card {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-button[type="submit"] {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-button[type="submit":hover] {
-  background-color: #0056b3;
-}
-</style>
