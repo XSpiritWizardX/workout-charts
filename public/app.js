@@ -1,27 +1,27 @@
-const form = document.getElementById("waitlist-form");
-const note = document.getElementById("form-note");
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
 
-if (form) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const email = new FormData(form).get("email");
-    if (!email) return;
-    note.textContent = "You're on the list — check your inbox for early access.";
-    form.reset();
-  });
-}
+  reveals.forEach((el) => observer.observe(el));
 
-const reveals = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
+  const form = document.getElementById("waitlist-form");
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const status = form.querySelector(".form-status");
+      const email = form.querySelector("input[name='email']").value.trim();
+      if (!email) return;
+      status.textContent = "You're in! We'll email you soon.";
+      form.reset();
     });
-  },
-  { threshold: 0.2 }
-);
-
-reveals.forEach((el) => observer.observe(el));
+  }
+});
