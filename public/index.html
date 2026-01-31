@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>workout-charts</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div class="page">
@@ -22,134 +25,147 @@
         </header>
         <main>
           <section class="hero reveal">
-            <div>
+            <div class="hero-copy">
               <span class="badge">Ship faster · stay aligned</span>
               <h1>workout-charts keeps momentum high.</h1>
               <p>Minimal SaaS-style workout manager</p>
-              <form id="waitlist-form">
+              <form id="waitlist-form" class="waitlist">
                 <input type="email" name="email" placeholder="you@company.com" required />
                 <button class="button" type="submit">Join the waitlist</button>
+                <span class="form-status" aria-live="polite"></span>
               </form>
-              <div class="form-note" id="form-note">No spam. Updates when we launch.</div>
-            </div>
-            <div class="hero-card">
-              <div class="card-header">
-                <h3>Today’s plan</h3>
-                <span class="pill">+12% volume</span>
-              </div>
-              <div class="chart">
-                <div class="bar" style="--value: 78%"></div>
-                <div class="bar" style="--value: 64%"></div>
-                <div class="bar" style="--value: 90%"></div>
-                <div class="bar" style="--value: 55%"></div>
-                <div class="bar" style="--value: 72%"></div>
-              </div>
-              <div class="card-metrics">
+              <div class="hero-metrics">
                 <div>
-                  <span>Active programs</span>
+                  <strong>32%</strong>
+                  <span>Faster planning</span>
+                </div>
+                <div>
+                  <strong>5 min</strong>
+                  <span>Daily check-in</span>
+                </div>
+                <div>
+                  <strong>Live</strong>
+                  <span>Progress charts</span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-panel">
+              <div class="panel-card">
+                <div class="panel-header">
+                  <h3>Today</h3>
+                  <span class="chip">Upper</span>
+                </div>
+                <div class="chart">
+                  <div class="bar" style="--h: 70%">Bench</div>
+                  <div class="bar" style="--h: 55%">Rows</div>
+                  <div class="bar" style="--h: 85%">Pull</div>
+                  <div class="bar" style="--h: 62%">Press</div>
+                </div>
+                <div class="panel-footer">
+                  <span>Sets</span>
                   <strong>18</strong>
                 </div>
-                <div>
-                  <span>Completion</span>
-                  <strong>92%</strong>
-                </div>
-                <div>
-                  <span>Sessions</span>
-                  <strong>1,248</strong>
-                </div>
+              </div>
+              <div class="panel-card ghost">
+                <h3>Weekly balance</h3>
+                <div class="ring"></div>
+                <p>Keep volume balanced across muscle groups with a simple dial.</p>
               </div>
             </div>
           </section>
-          <section id="features" class="grid reveal">
-            <article class="panel">
-              <h3>Program clarity</h3>
-              <p>Build clean training blocks with auto-tagged lifts, rest times, and progressions.</p>
-            </article>
-            <article class="panel">
-              <h3>Workout timelines</h3>
-              <p>Visualize sessions, volume, and intensity with bold charts that scale with teams.</p>
-            </article>
-            <article class="panel">
-              <h3>Team alignment</h3>
-              <p>Share plans, lock key movements, and comment inline when adjustments are needed.</p>
-            </article>
+
+          <section id="features" class="section reveal">
+            <div class="section-title">
+              <span class="eyebrow">Features</span>
+              <h2>Everything you need to stay consistent.</h2>
+            </div>
+            <div class="grid">
+              <article class="card">
+                <h3>Progress-first charts</h3>
+                <p>See volume, intensity, and recovery at a glance with clean visuals.</p>
+              </article>
+              <article class="card">
+                <h3>Micro-planning</h3>
+                <p>Short planning blocks keep workouts focused and easy to repeat.</p>
+              </article>
+              <article class="card">
+                <h3>Team-ready</h3>
+                <p>Share plans with coaches or training partners in one link.</p>
+              </article>
+            </div>
           </section>
-          <section id="workflow" class="workflow reveal">
+
+          <section id="workflow" class="section workflow reveal">
+            <div class="section-title">
+              <span class="eyebrow">Workflow</span>
+              <h2>From idea to completed session.</h2>
+            </div>
+            <div class="steps">
+              <div class="step">
+                <span>01</span>
+                <h3>Pick a template</h3>
+                <p>Start with strength, hypertrophy, or conditioning flows.</p>
+              </div>
+              <div class="step">
+                <span>02</span>
+                <h3>Track in-session</h3>
+                <p>Log sets quickly and auto-fill rest times.</p>
+              </div>
+              <div class="step">
+                <span>03</span>
+                <h3>Review trends</h3>
+                <p>Charts highlight what to increase next week.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="pricing" class="section pricing reveal">
+            <div class="section-title">
+              <span class="eyebrow">Pricing</span>
+              <h2>Simple plans for every athlete.</h2>
+            </div>
+            <div class="pricing-grid">
+              <div class="card price">
+                <h3>Starter</h3>
+                <p class="price-tag">$9 / mo</p>
+                <ul>
+                  <li>Unlimited sessions</li>
+                  <li>Weekly charts</li>
+                  <li>1 coach share</li>
+                </ul>
+                <button class="button ghost">Choose Starter</button>
+              </div>
+              <div class="card price featured">
+                <h3>Studio</h3>
+                <p class="price-tag">$19 / mo</p>
+                <ul>
+                  <li>Advanced analytics</li>
+                  <li>Program templates</li>
+                  <li>3 coach shares</li>
+                </ul>
+                <button class="button">Choose Studio</button>
+              </div>
+              <div class="card price">
+                <h3>Team</h3>
+                <p class="price-tag">$49 / mo</p>
+                <ul>
+                  <li>Unlimited athletes</li>
+                  <li>Coach dashboards</li>
+                  <li>Priority support</li>
+                </ul>
+                <button class="button ghost">Talk to us</button>
+              </div>
+            </div>
+          </section>
+
+          <section id="cta" class="section cta reveal">
             <div>
-              <h2>Every program in one flow.</h2>
-              <p>Create, assign, and iterate without spreadsheets. workout-charts is made for strength coaches and fitness teams that want clarity fast.</p>
-              <div class="checklist">
-                <div>Rapid program templates</div>
-                <div>Auto-generated progress checks</div>
-                <div>Shareable athlete dashboards</div>
-              </div>
+              <h2>Stay on the list.</h2>
+              <p>We’re opening early access to a small group each week.</p>
             </div>
-            <div class="timeline">
-              <div>
-                <span>Week 1</span>
-                <strong>Foundation</strong>
-                <p>Movement patterns + baseline metrics</p>
-              </div>
-              <div>
-                <span>Week 4</span>
-                <strong>Progress</strong>
-                <p>Volume ramps + recovery signals</p>
-              </div>
-              <div>
-                <span>Week 8</span>
-                <strong>Peak</strong>
-                <p>Intensity focus + competition prep</p>
-              </div>
-            </div>
-          </section>
-          <section id="pricing" class="pricing reveal">
-            <div class="price-card">
-              <h3>Starter</h3>
-              <p class="price">$18<span>/mo</span></p>
-              <ul>
-                <li>Up to 5 athletes</li>
-                <li>Basic reporting</li>
-                <li>Template library</li>
-              </ul>
-              <a class="button ghost" href="#cta">Start small</a>
-            </div>
-            <div class="price-card featured">
-              <h3>Studio</h3>
-              <p class="price">$48<span>/mo</span></p>
-              <ul>
-                <li>Unlimited athletes</li>
-                <li>Live dashboards</li>
-                <li>Coach collaboration</li>
-              </ul>
-              <a class="button" href="#cta">Go Studio</a>
-            </div>
-            <div class="price-card">
-              <h3>Performance</h3>
-              <p class="price">$96<span>/mo</span></p>
-              <ul>
-                <li>Advanced analytics</li>
-                <li>Multi-location teams</li>
-                <li>Priority support</li>
-              </ul>
-              <a class="button ghost" href="#cta">Talk to us</a>
-            </div>
-          </section>
-          <section id="cta" class="cta reveal">
-            <div>
-              <h2>Ready to build the clearest workout plans?</h2>
-              <p>Join early access and get the first set of planning templates.</p>
-            </div>
-            <a class="button" href="#waitlist-form">Join now</a>
+            <a class="button" href="#waitlist-form">Get early access</a>
           </section>
         </main>
-        <footer class="footer">
-          <span>© 2026 workout-charts</span>
-          <div class="footer-links">
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#cta">Contact</a>
-          </div>
-        </footer>
       </div>
     </div>
     <script src="app.js"></script>
