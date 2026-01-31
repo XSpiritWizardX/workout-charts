@@ -1,0 +1,4 @@
+- Build SQL that joins workouts -> exercises and filters by orgId and performed_on between from/to when provided.
+- Aggregate in JS into {totals, series} where series is [{date, workouts, volume}].
+- Return 404 if org does not exist; return empty totals when no workouts.
+- Add basic input validation for dates (YYYY-MM-DD).
