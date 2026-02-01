@@ -1,27 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const reveals = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
+const reveals = document.querySelectorAll('.reveal');
+const demoBtn = document.getElementById('demoBtn');
+const form = document.getElementById('waitlistForm');
+const formNote = document.getElementById('formNote');
 
-  reveals.forEach((el) => observer.observe(el));
-
-  const form = document.getElementById("waitlist-form");
-  if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const status = form.querySelector(".form-status");
-      const email = form.querySelector("input[name='email']").value.trim();
-      if (!email) return;
-      status.textContent = "You're in! We'll email you soon.";
-      form.reset();
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
     });
-  }
-});
+  },
+  { threshold: 0.2 }
+);
+
+reveals.forEach(el => observer.observe(el));
+
+if (demoBtn) {
+  demoBtn.addEventListener('click', () => {
+    demoBtn.textContent = 'Demo queued — check your email soon';
+    demoBtn.disabled = true;
+    demoBtn.classList.add('button--primary');
+  });
+}
+
+if (form) {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const email = new FormData(form).get('email');
+    form.reset();
+    formNote.textContent = `Thanks! We'll reach out to ${email}.`;
+  });
+}
