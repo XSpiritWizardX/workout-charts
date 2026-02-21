@@ -1,55 +1,40 @@
-document.body.classList.add('ready');
-
 const revealItems = document.querySelectorAll('.reveal');
 
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
+const observer = new IntersectionObserver(
+  (entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.16 }
 );
 
-revealItems.forEach((item) => revealObserver.observe(item));
+revealItems.forEach((item) => observer.observe(item));
 
-const form = document.getElementById('waitlist-form');
-const message = document.getElementById('form-message');
-const countEl = document.getElementById('waitlist-total');
+const form = document.querySelector('.waitlist');
+const emailInput = document.querySelector('#email');
+const statusText = document.querySelector('.waitlist-status');
 
-if (form) {
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+form?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = emailInput.value.trim();
 
-    const email = String(form.elements.email.value || '').trim();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    statusText.textContent = 'Enter a valid email address.';
+    statusText.className = 'waitlist-status error';
+    emailInput.focus();
+    return;
+  }
 
-    message.className = 'form-message';
+  statusText.textContent = 'Saving your spot...';
+  statusText.className = 'waitlist-status';
 
-    if (!valid) {
-      message.textContent = 'Enter a valid email address.';
-      message.classList.add('is-err');
-      return;
-    }
-
-    const submitButton = form.querySelector("button[type='submit']");
-    const oldText = submitButton.textContent;
-    submitButton.disabled = true;
-    submitButton.textContent = 'Saving...';
-
-    setTimeout(() => {
-      submitButton.disabled = false;
-      submitButton.textContent = oldText;
-      form.reset();
-      message.textContent = 'You are on the waitlist. Invite coming soon.';
-      message.classList.add('is-ok');
-
-      if (countEl) {
-        const current = Number(countEl.textContent.replace(/,/g, '')) || 0;
-        countEl.textContent = (current + 1).toLocaleString();
-      }
-    }, 700);
-  });
-}
+  setTimeout(() => {
+    statusText.textContent = "You're in. We will send launch updates soon.";
+    statusText.className = 'waitlist-status ok';
+    form.reset();
+  }, 600);
+});
