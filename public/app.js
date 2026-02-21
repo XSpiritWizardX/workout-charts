@@ -1,35 +1,46 @@
-const reveals = document.querySelectorAll('.reveal');
-const demoBtn = document.getElementById('demoBtn');
-const form = document.getElementById('waitlistForm');
-const formNote = document.getElementById('formNote');
+const revealEls = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
+  (entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.18 }
 );
 
-reveals.forEach(el => observer.observe(el));
+revealEls.forEach((el) => observer.observe(el));
 
-if (demoBtn) {
-  demoBtn.addEventListener('click', () => {
-    demoBtn.textContent = 'Demo queued — check your email soon';
-    demoBtn.disabled = true;
-    demoBtn.classList.add('button--primary');
-  });
-}
+const countEl = document.getElementById('waitlist-count');
+const form = document.getElementById('waitlist-form');
+const statusEl = document.getElementById('waitlist-status');
+const storageKey = 'workoutChartsWaitlist';
 
-if (form) {
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    const email = new FormData(form).get('email');
-    form.reset();
-    formNote.textContent = `Thanks! We'll reach out to ${email}.`;
-  });
-}
+const initialCount = Number(localStorage.getItem(storageKey) || '214');
+countEl.textContent = initialCount.toLocaleString();
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const emailInput = form.querySelector("input[name='email']");
+  const email = emailInput.value.trim();
+  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!isEmail) {
+    statusEl.textContent = 'Enter a valid email to join the list.';
+    statusEl.classList.add('error');
+    emailInput.focus();
+    return;
+  }
+
+  statusEl.classList.remove('error');
+  const current = Number(localStorage.getItem(storageKey) || '214');
+  const next = current + 1;
+  localStorage.setItem(storageKey, String(next));
+  countEl.textContent = next.toLocaleString();
+
+  statusEl.textContent = 'You are in. Early access details are on the way.';
+  form.reset();
+});
