@@ -1,46 +1,55 @@
-const revealEls = document.querySelectorAll('.reveal');
+document.body.classList.add('ready');
 
-const observer = new IntersectionObserver(
-  (entries) => {
+const revealItems = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     });
   },
-  { threshold: 0.18 }
+  { threshold: 0.2 }
 );
 
-revealEls.forEach((el) => observer.observe(el));
+revealItems.forEach((item) => revealObserver.observe(item));
 
-const countEl = document.getElementById('waitlist-count');
 const form = document.getElementById('waitlist-form');
-const statusEl = document.getElementById('waitlist-status');
-const storageKey = 'workoutChartsWaitlist';
+const message = document.getElementById('form-message');
+const countEl = document.getElementById('waitlist-total');
 
-const initialCount = Number(localStorage.getItem(storageKey) || '214');
-countEl.textContent = initialCount.toLocaleString();
+if (form) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const emailInput = form.querySelector("input[name='email']");
-  const email = emailInput.value.trim();
-  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const email = String(form.elements.email.value || '').trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  if (!isEmail) {
-    statusEl.textContent = 'Enter a valid email to join the list.';
-    statusEl.classList.add('error');
-    emailInput.focus();
-    return;
-  }
+    message.className = 'form-message';
 
-  statusEl.classList.remove('error');
-  const current = Number(localStorage.getItem(storageKey) || '214');
-  const next = current + 1;
-  localStorage.setItem(storageKey, String(next));
-  countEl.textContent = next.toLocaleString();
+    if (!valid) {
+      message.textContent = 'Enter a valid email address.';
+      message.classList.add('is-err');
+      return;
+    }
 
-  statusEl.textContent = 'You are in. Early access details are on the way.';
-  form.reset();
-});
+    const submitButton = form.querySelector("button[type='submit']");
+    const oldText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Saving...';
+
+    setTimeout(() => {
+      submitButton.disabled = false;
+      submitButton.textContent = oldText;
+      form.reset();
+      message.textContent = 'You are on the waitlist. Invite coming soon.';
+      message.classList.add('is-ok');
+
+      if (countEl) {
+        const current = Number(countEl.textContent.replace(/,/g, '')) || 0;
+        countEl.textContent = (current + 1).toLocaleString();
+      }
+    }, 700);
+  });
+}
