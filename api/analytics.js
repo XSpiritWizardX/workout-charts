@@ -1,0 +1,1 @@
+Create an Express router for analytics, validate query params, and run a grouped SQLite query joining workouts and exercises. Return stable JSON sorted by week ascending, include zero-safe numeric defaults, and return `400` for invalid date ranges.
