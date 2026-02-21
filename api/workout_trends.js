@@ -1,0 +1,1 @@
+Create an Express router in `api/workout_trends.js` that joins workouts and exercises, aggregates in SQL, and returns deterministic ordering. Add coverage in `tests/api/workout_trends.test.js` using Node’s built-in test runner with an in-memory SQLite database: success case, empty-range case, invalid date case, and exercise filter case.
