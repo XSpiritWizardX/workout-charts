@@ -17,7 +17,7 @@
 
       <div class='shell'>
         <header class='nav'>
-          <div class='logo'>workout-charts</div>
+          <a class='logo' href='#'>workout-charts</a>
           <nav class='nav-links'>
             <a href='#features'>Features</a>
             <a href='#workflow'>Workflow</a>
@@ -29,95 +29,97 @@
         <main>
           <section class='hero reveal'>
             <div class='hero-copy'>
-              <span class='badge'>Minimal SaaS</span>
-              <h1>Manage workouts with zero clutter and clear progress.</h1>
-              <p>Build weekly routines, track sets and reps, and spot performance trends instantly with clean charts.</p>
+              <span class='badge'>Minimal SaaS Workout Manager</span>
+              <h1>Train smarter with charts that keep your momentum visible.</h1>
+              <p>Track sessions, visualize progress, and stay consistent with a focused dashboard built for lifters and coaches.</p>
               <div class='hero-actions'>
                 <a class='button' href='#cta'>Join Waitlist</a>
-                <a class='button button--ghost' href='#workflow'>See Workflow</a>
+                <a class='button button--ghost' href='#pricing'>See Pricing</a>
               </div>
-              <p class='waitlist-count'><strong id='waitlist-total'>1,284</strong> athletes on the early list</p>
             </div>
 
-            <aside class='hero-panel'>
-              <h2>This Week</h2>
-              <div class='panel-row'>
-                <span>Sessions</span>
-                <strong>4 / 5</strong>
+            <div class='hero-panel'>
+              <div class='stat-card'>
+                <span>Weekly Completion</span>
+                <strong>86%</strong>
               </div>
-              <div class='panel-row'>
-                <span>Total Volume</span>
-                <strong>12,480 kg</strong>
+              <div class='stat-card'>
+                <span>Volume Trend</span>
+                <strong>+12.4%</strong>
               </div>
-              <div class='panel-metrics'>
-                <div class='metric'>
-                  <span>Push</span>
-                  <div class='meter'><i class='meter-fill' style='--w:88%'></i></div>
-                </div>
-                <div class='metric'>
-                  <span>Pull</span>
-                  <div class='meter'><i class='meter-fill' style='--w:71%'></i></div>
-                </div>
-                <div class='metric'>
-                  <span>Legs</span>
-                  <div class='meter'><i class='meter-fill' style='--w:93%'></i></div>
-                </div>
+              <div class='stat-card'>
+                <span>Active Programs</span>
+                <strong>24</strong>
               </div>
-            </aside>
+            </div>
           </section>
 
           <section id='features' class='section reveal'>
-            <h2>Built for focused training</h2>
-            <div class='grid'>
+            <h2>Everything your training data needs</h2>
+            <div class='grid grid--3'>
               <article class='card'>
-                <h3>Routine Builder</h3>
-                <p>Create and reorder workout days in seconds.</p>
+                <h3>Progress Charts</h3>
+                <p>Auto-generated strength, volume, and consistency charts without spreadsheet work.</p>
               </article>
               <article class='card'>
-                <h3>Charted Progress</h3>
-                <p>Track volume, intensity, and personal records.</p>
+                <h3>Program Templates</h3>
+                <p>Reusable plans for hypertrophy, strength blocks, and coach-led group cycles.</p>
               </article>
               <article class='card'>
-                <h3>Fast Logging</h3>
-                <p>Capture sets with a keyboard-first, distraction-free flow.</p>
+                <h3>Session Notes</h3>
+                <p>Log pain signals, RPE, and recovery context right where performance is tracked.</p>
               </article>
             </div>
           </section>
 
           <section id='workflow' class='section reveal'>
-            <h2>Simple workflow</h2>
-            <ol class='steps'>
-              <li><strong>1.</strong> Build your weekly split.</li>
-              <li><strong>2.</strong> Log reps, sets, and load after each exercise.</li>
-              <li><strong>3.</strong> Review charts and adjust next week with confidence.</li>
-            </ol>
-          </section>
-
-          <section id='pricing' class='section reveal'>
-            <h2>Early pricing</h2>
-            <div class='grid grid--pricing'>
-              <article class='card price-card'>
-                <h3>Starter</h3>
-                <p class='price'>$0</p>
-                <p>Basic workout planning and chart history.</p>
+            <h2>From workout to insight in 3 steps</h2>
+            <div class='grid grid--3'>
+              <article class='step'>
+                <span>01</span>
+                <h3>Log</h3>
+                <p>Capture sets, reps, load, and notes in under a minute.</p>
               </article>
-              <article class='card price-card price-card--featured'>
-                <h3>Pro</h3>
-                <p class='price'>$9/mo</p>
-                <p>Advanced analytics, exercise templates, and exports.</p>
+              <article class='step'>
+                <span>02</span>
+                <h3>Visualize</h3>
+                <p>Watch clear trend lines update after each session.</p>
+              </article>
+              <article class='step'>
+                <span>03</span>
+                <h3>Adjust</h3>
+                <p>Use weekly snapshots to refine the next cycle with confidence.</p>
               </article>
             </div>
           </section>
 
-          <section id='cta' class='section section--cta reveal'>
-            <h2>Get beta access</h2>
-            <p>Enter your email and we will send your invite.</p>
-            <form id='waitlist-form' class='waitlist' novalidate>
+          <section id='pricing' class='section reveal'>
+            <h2>Simple pricing</h2>
+            <div class='grid grid--2'>
+              <article class='price-card'>
+                <h3>Starter</h3>
+                <p class='price'>$0<span>/mo</span></p>
+                <p>For solo athletes building a training habit.</p>
+                <a href='#cta' class='button button--ghost'>Start Free</a>
+              </article>
+              <article class='price-card price-card--featured'>
+                <h3>Pro Coach</h3>
+                <p class='price'>$19<span>/mo</span></p>
+                <p>For coaches managing clients and shared programs.</p>
+                <a href='#cta' class='button'>Get Early Access</a>
+              </article>
+            </div>
+          </section>
+
+          <section id='cta' class='section cta reveal'>
+            <h2>Get early access</h2>
+            <p>Join the waitlist and get launch pricing when workout-charts ships.</p>
+            <form class='waitlist' novalidate>
               <label class='sr-only' for='email'>Email</label>
               <input id='email' name='email' type='email' placeholder='you@domain.com' required />
               <button class='button' type='submit'>Join Waitlist</button>
             </form>
-            <p id='form-message' class='form-message' aria-live='polite'></p>
+            <p class='waitlist-status' aria-live='polite'></p>
           </section>
         </main>
       </div>
